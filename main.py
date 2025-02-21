@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Port
+port = int(os.getenv("PORT", 7860))
+
 # Default OpenAI API Key (Can be overridden in UI)
 DEFAULT_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
@@ -175,4 +178,4 @@ with gr.Blocks(
         outputs=output_text,
     )
 
-ui.launch()
+ui.launch(server_name="0.0.0.0", server_port=port)
